@@ -6,4 +6,8 @@ export type appState = {
   endTimeDisabled: boolean;
   apiData?: Results;
   loading: boolean;
+  chargerIDs: string[];
+  userIDs: string[];
+  groupIDs: string[];
+  rfidTags: string[];
 };

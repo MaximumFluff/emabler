@@ -1,55 +1,20 @@
 import './InputRow.css';
-import { DateTimePicker } from '@mui/lab';
-import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { connect, ConnectedProps } from 'react-redux';
 import { appState } from '../types/appState';
 import * as actions from '../actions/appState';
 import { formatISO } from 'date-fns';
 import { callApi } from '../api';
+import { TextInputs } from './TextInputs';
+import { DatePickers } from './DatePickers';
 
 type Props = ConnectedProps<typeof connector>;
 
 const InputRow = (props: Props) => {
   return (
     <div id='InputRow'>
-      <DateTimePicker
-        renderInput={(props) => <TextField {...props} />}
-        label='Start Date'
-        value={props.startTime}
-        onChange={(newValue) => {
-          props.setStartTime({ startTime: newValue });
-        }}
-      ></DateTimePicker>
-      <div
-        style={{
-          display: 'inherit',
-          flexDirection: 'column',
-        }}
-      >
-        <DateTimePicker
-          renderInput={(props) => <TextField {...props} />}
-          label='End Date'
-          value={props.endTime}
-          disabled={!props.endDateDisabled}
-          onChange={(newValue) => {
-            props.setEndTime({ endTime: newValue });
-          }}
-        ></DateTimePicker>
-        <FormControlLabel
-          sx={{
-            typography: {
-              color: 'white',
-            },
-          }}
-          control={
-            <Checkbox
-              value={props.endDateDisabled}
-              onChange={props.setEndDateDisabled}
-            />
-          }
-          label='Enable End Date'
-        />
-      </div>
+      <DatePickers />
+      <TextInputs />
       <Button
         variant='outlined'
         style={{
@@ -80,6 +45,7 @@ const mapStateToProps = (state: appState) => ({
   startTime: state.startTime,
   endTime: state.endTime,
   endDateDisabled: state.endTimeDisabled,
+  chargerIDs: state.chargerIDs,
 });
 
 const mapDispatchToProps = {
@@ -88,6 +54,7 @@ const mapDispatchToProps = {
   setEndDateDisabled: actions.toggleEndStateDisabled,
   setApiData: actions.setApiData,
   setLoading: actions.setLoading,
+  setChargerIDs: actions.setChargerIDs,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

@@ -16,3 +16,11 @@ export const setApiData = createAction('SET_API_DATA')<{
 }>();
 
 export const setLoading = createAction('SET_LOADING')<boolean>();
+
+export const setChargerIDs = createAction('SET_CHARGER_IDS')<string[]>();
+
+export const setUserIDs = createAction('SET_USER_IDS')<string[]>();
+
+export const setGroupIDs = createAction('SET_GROUP_IDS')<string[]>();
+
+export const setRfidTags = createAction('SET_RFID_TAGS')<string[]>();

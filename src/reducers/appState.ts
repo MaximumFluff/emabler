@@ -3,11 +3,15 @@ import { ActionType, getType, Reducer } from 'typesafe-actions';
 import { appState } from '../types/appState';
 
 const initialState: appState = {
-  startTime: undefined,
-  endTime: undefined,
+  startTime: new Date(),
+  endTime: new Date(),
   endTimeDisabled: false,
   apiData: undefined,
   loading: false,
+  chargerIDs: [],
+  userIDs: [],
+  groupIDs: [],
+  rfidTags: [],
 };
 
 const reducer: Reducer<appState, ActionType<typeof actions>> = (
@@ -43,6 +47,30 @@ const reducer: Reducer<appState, ActionType<typeof actions>> = (
       return {
         ...state,
         loading: action.payload,
+      };
+    }
+    case getType(actions.setChargerIDs): {
+      return {
+        ...state,
+        chargerIDs: [...action.payload],
+      };
+    }
+    case getType(actions.setUserIDs): {
+      return {
+        ...state,
+        userIDs: [...action.payload],
+      };
+    }
+    case getType(actions.setGroupIDs): {
+      return {
+        ...state,
+        groupIDs: [...action.payload],
+      };
+    }
+    case getType(actions.setRfidTags): {
+      return {
+        ...state,
+        rfidTags: [...action.payload],
       };
     }
     default:

@@ -6,7 +6,6 @@ import { appState } from '../types/appState';
 type Props = ConnectedProps<typeof connector>;
 
 const Table = (props: Props) => {
-  console.log(props.apiData);
   return (
     <div style={{ marginTop: 20 }}>
       <DataGrid
