@@ -22,13 +22,13 @@ const reducer: Reducer<appState, ActionType<typeof actions>> = (
     case getType(actions.setStartTime): {
       return {
         ...state,
-        startTime: action.payload.startTime,
+        startTime: action.payload,
       };
     }
     case getType(actions.setEndTime): {
       return {
         ...state,
-        endTime: action.payload.endTime,
+        endTime: action.payload,
       };
     }
     case getType(actions.toggleEndStateDisabled): {

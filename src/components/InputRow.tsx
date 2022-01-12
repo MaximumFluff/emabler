@@ -1,35 +1,24 @@
-import './InputRow.css';
 import { Button } from '@mui/material';
 import { connect, ConnectedProps } from 'react-redux';
 import { appState } from '../types/appState';
-import * as actions from '../actions/appState';
-import { formatISO } from 'date-fns';
-import { callApi } from '../api';
-import { TextInputs } from './TextInputs';
-import { DatePickers } from './DatePickers';
+import { callTransactionsApi } from '../api';
+import { createApiBody } from '../selectors/appState';
+import { setApiData, setLoading } from '../actions/appState';
+import { Styles } from '../types/styles';
 
 type Props = ConnectedProps<typeof connector>;
 
 const InputRow = (props: Props) => {
   return (
-    <div id='InputRow'>
-      <DatePickers />
-      <TextInputs />
+    <div style={styles.container}>
       <Button
         variant='outlined'
-        style={{
-          height: 70,
-        }}
+        style={styles.buttonHeight}
         onClick={async () => {
           if (props.startTime && props.endTime) {
             props.setLoading(true);
             props.setApiData({
-              apiData: await callApi({
-                startTime: formatISO(props.startTime),
-                endTime: props.endDateDisabled
-                  ? undefined
-                  : formatISO(props.endTime),
-              }),
+              apiData: await callTransactionsApi(props.requestBody),
             });
             props.setLoading(false);
           }
@@ -41,20 +30,26 @@ const InputRow = (props: Props) => {
   );
 };
 
+const styles: Styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  buttonHeight: {
+    height: 70,
+  },
+};
+
 const mapStateToProps = (state: appState) => ({
   startTime: state.startTime,
   endTime: state.endTime,
-  endDateDisabled: state.endTimeDisabled,
-  chargerIDs: state.chargerIDs,
+  requestBody: createApiBody(state),
 });
 
 const mapDispatchToProps = {
-  setStartTime: actions.setStartTime,
-  setEndTime: actions.setEndTime,
-  setEndDateDisabled: actions.toggleEndStateDisabled,
-  setApiData: actions.setApiData,
-  setLoading: actions.setLoading,
-  setChargerIDs: actions.setChargerIDs,
+  setApiData,
+  setLoading,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

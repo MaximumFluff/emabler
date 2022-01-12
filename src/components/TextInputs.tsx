@@ -7,20 +7,13 @@ import {
   setGroupIDs,
   setRfidTags,
 } from '../actions/appState';
+import { Styles } from '../types/styles';
 
 type Props = ConnectedProps<typeof connector>;
 
 const TextInputs = (props: Props) => {
   return (
-    <div
-      style={{
-        display: 'inherit',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 20,
-        flexWrap: 'wrap',
-      }}
-    >
+    <div style={styles.container}>
       <InputList
         label={'Add Charger ID'}
         data={props.chargerIDs}
@@ -43,6 +36,16 @@ const TextInputs = (props: Props) => {
       />
     </div>
   );
+};
+
+const styles: Styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    flexWrap: 'wrap',
+  },
 };
 
 const connector = connect(

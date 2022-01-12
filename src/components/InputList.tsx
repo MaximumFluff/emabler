@@ -9,6 +9,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import { KeyboardEvent, useState } from 'react';
+import { Styles } from '../types/styles';
 
 type Props = {
   label: string;
@@ -37,13 +38,7 @@ const InputList = (props: Props) => {
   };
 
   return (
-    <div
-      style={{
-        border: '1px solid gray',
-        borderRadius: 10,
-        padding: 10,
-      }}
-    >
+    <div style={styles.container}>
       <div
         style={{
           display: 'flex',
@@ -53,18 +48,14 @@ const InputList = (props: Props) => {
           error={error}
           helperText={error && 'Incorrect entry'}
           value={text}
-          label={props.label}
+          label={`${props.label} (optional)`}
           variant='outlined'
           onChange={(input) => setText(input.target.value)}
           onKeyDown={onKeyPress}
         />
         <Button
           onClick={() => validateText(text)}
-          style={{
-            marginLeft: 5,
-            justifyContent: 'center',
-            alignSelf: 'center',
-          }}
+          style={styles.inputListButton}
           endIcon={<SendIcon />}
         >
           Add
@@ -87,12 +78,26 @@ const InputList = (props: Props) => {
               </IconButton>
             }
           >
-            <ListItemText sx={{ color: 'white' }}>{item}</ListItemText>
+            <ListItemText sx={styles.listItemText}>{item}</ListItemText>
           </ListItem>
         ))}
       </List>
     </div>
   );
+};
+
+const styles: Styles = {
+  container: {
+    padding: 10,
+  },
+  inputListButton: {
+    marginLeft: 5,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  listItemText: {
+    color: 'white',
+  },
 };
 
 export { InputList };

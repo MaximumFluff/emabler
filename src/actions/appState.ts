@@ -1,11 +1,13 @@
 import { createAction } from 'typesafe-actions';
 import { Results } from '../types/api';
 
-export const setStartTime =
-  createAction('SET_START_TIME')<{ startTime: Date | null | undefined }>();
+export const setStartTime = createAction('SET_START_TIME')<
+  Date | null | undefined
+>();
 
-export const setEndTime =
-  createAction('SET_END_TIME')<{ endTime: Date | null | undefined }>();
+export const setEndTime = createAction('SET_END_TIME')<
+  Date | null | undefined
+>();
 
 export const toggleEndStateDisabled = createAction(
   'TOGGLE_END_STATE_DISABLED'
