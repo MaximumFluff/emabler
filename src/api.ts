@@ -21,7 +21,7 @@ export async function callTransactionsApi(requestBody: RequestBody) {
 
 export async function callChargerApi(chargerId: string) {
   const response = await fetch(
-    `https://emabler.azurewebsites.net/api/charger-api?chargerName=${chargerId}&code=${process.env.REACT_APP_API_KEY}&clientId=${process.env.REACT_APP_CLIENT_ID}`
+    `https://emabler.azurewebsites.net/api/charger-api?chargerId=${chargerId}&code=${process.env.REACT_APP_API_KEY}&clientId=${process.env.REACT_APP_CLIENT_ID}`
   );
   if (!response.ok) {
     throw new Error(response.statusText);

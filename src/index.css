@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 
 body {
-  margin: 0;
+  padding: 100px;
   background-color: #393f49;
   font-family: 'Roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
 }

@@ -8,7 +8,7 @@ import { Styles } from '../types/styles';
 
 type Props = ConnectedProps<typeof connector>;
 
-const InputRow = (props: Props) => {
+const SubmitButton = (props: Props) => {
   return (
     <div style={styles.container}>
       <Button
@@ -54,6 +54,6 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-const connected = connector(InputRow);
+const connected = connector(SubmitButton);
 
-export { connected as InputRow };
+export { connected as SubmitButton };

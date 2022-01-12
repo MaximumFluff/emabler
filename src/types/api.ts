@@ -26,4 +26,9 @@ type Results = {
   results: Transaction[];
 };
 
-export type { RequestBody, Transaction, Results };
+type ChargerData = {
+  activeConnection: false;
+  chargerStatus: string;
+};
+
+export type { RequestBody, Transaction, Results, ChargerData };

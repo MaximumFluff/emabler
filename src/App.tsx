@@ -1,24 +1,19 @@
+import { ChargerStatus } from './components/ChargerStatus';
 import { DatePickers } from './components/DatePickers';
-import { InputRow } from './components/InputRow';
+import { SubmitButton } from './components/SubmitButton';
 import { Table } from './components/Table';
 import { TextInputs } from './components/TextInputs';
-import { Styles } from './types/styles';
 
 function App() {
   return (
-    <div style={styles.container}>
+    <div>
       <DatePickers />
       <TextInputs />
-      <InputRow />
+      <SubmitButton />
       <Table />
+      <ChargerStatus chargerId='eMabler_Test1' />
     </div>
   );
 }
-
-const styles: Styles = {
-  container: {
-    padding: 100,
-  },
-};
 
 export default App;
