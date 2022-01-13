@@ -28,7 +28,7 @@ const InputList = (props: Props) => {
   };
 
   const validateText = (text: string) => {
-    if (props.data.find((item) => item === text)) {
+    if (props.data.find((item) => item === text) || text === '') {
       setError(true);
     } else {
       props.setData([...props.data, text]);
@@ -46,7 +46,7 @@ const InputList = (props: Props) => {
       >
         <TextField
           error={error}
-          helperText={error && 'Incorrect entry'}
+          helperText={error && 'Empty or duplicate entry'}
           value={text}
           label={`${props.label} (optional)`}
           variant='outlined'
