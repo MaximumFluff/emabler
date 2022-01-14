@@ -4,7 +4,8 @@ import { appState } from '../types/appState';
 
 export const createApiBody = (state: appState): RequestBody => ({
   startTime: state.startTime ? formatISO(state.startTime) : '',
-  endTime: state.endTime ? formatISO(state.endTime) : '',
+  endTime:
+    state.endTime && !state.endTimeDisabled ? formatISO(state.endTime) : '',
   chargerIDs: state.chargerIDs.length > 0 ? state.chargerIDs : undefined,
   userIDs: state.userIDs.length > 0 ? state.userIDs : undefined,
   groupIDs: state.groupIDs.length > 0 ? state.groupIDs : undefined,

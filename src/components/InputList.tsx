@@ -39,11 +39,7 @@ const InputList = (props: Props) => {
 
   return (
     <div style={styles.container}>
-      <div
-        style={{
-          display: 'flex',
-        }}
-      >
+      <div style={styles.textFieldContainer}>
         <TextField
           error={error}
           helperText={error && 'Empty or duplicate entry'}
@@ -89,6 +85,9 @@ const InputList = (props: Props) => {
 const styles: Styles = {
   container: {
     padding: 10,
+  },
+  textFieldContainer: {
+    display: 'flex',
   },
   inputListButton: {
     marginLeft: 5,

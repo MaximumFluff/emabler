@@ -13,7 +13,6 @@ const ChargerStatus = (props: Props) => {
   useEffect(() => {
     async function fetchData() {
       const data = await callChargerApi(props.chargerId);
-      console.log(data);
       setChargerData(data);
     }
     fetchData();
